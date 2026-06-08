@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chanunporn Bunjongkarnkul — BA &amp; SA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FAFAF8;
+            --ink: #1A1A1A;
+            --ink-mid: #444;
+            --ink-light: #888;
+            --accent: #1B7B84;
+            --accent-faint: #EBF5F6;
+            --border: #E8E8E3;
+            --tag-bg: #F2F8F9;
+            --tag-border: #C4DCE0;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.6;
+            font-size: 15px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        a:hover { color: var(--accent); }
+
+        /* ── HEADER ── */
+        header {
+            padding: 64px 80px 52px;
+            border-bottom: 1px solid var(--border);
+            animation: fadeUp 0.55s ease both;
+        }
+
+        .header-rule {
+            width: 44px;
+            height: 3px;
+            background: var(--accent);
+            margin-bottom: 28px;
+            border-radius: 2px;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 58px;
+            font-weight: 300;
+            letter-spacing: -0.5px;
+            line-height: 1.05;
+            color: var(--ink);
+            margin-bottom: 10px;
+        }
+
+        .headline {
+            font-size: 11px;
+            letter-spacing: 3.5px;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+
+        .contact-row {
+            display: flex;
+            gap: 36px;
+            flex-wrap: wrap;
+            font-size: 13.5px;
+            color: var(--ink-light);
+        }
+
+        .contact-row span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .contact-row svg {
+            width: 13px;
+            height: 13px;
+            opacity: 0.5;
+            flex-shrink: 0;
+        }
+
+        /* ── SECTIONS ── */
+        section {
+            padding: 44px 80px;
+            border-bottom: 1px solid var(--border);
+            animation: fadeUp 0.55s ease both;
+        }
+
+        section:nth-child(2) { animation-delay: 0.08s; }
+        section:nth-child(3) { animation-delay: 0.14s; }
+        section:nth-child(4) { animation-delay: 0.20s; }
+        section:nth-child(5) { animation-delay: 0.26s; }
+        section:nth-child(6) { animation-delay: 0.32s; }
+
+        section:last-child { border-bottom: none; padding-bottom: 80px; }
+
+        .section-label {
+            font-size: 10px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 28px;
+        }
+
+        /* ── SUMMARY ── */
+        .summary-text {
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--ink-mid);
+            max-width: 700px;
+        }
+
+        /* ── EXPERIENCE ── */
+        .job {
+            padding-left: 22px;
+            border-left: 2px solid var(--border);
+            margin-bottom: 44px;
+            position: relative;
+            transition: border-color 0.2s;
+        }
+
+        .job::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 10px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--border);
+            border: 2px solid var(--bg);
+            transition: background 0.2s;
+        }
+
+        .job:hover {
+            border-color: var(--accent);
+        }
+
+        .job:hover::before {
+            background: var(--accent);
+        }
+
+        .job:last-child { margin-bottom: 0; }
+
+        .job-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-bottom: 4px;
+        }
+
+        .company {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 23px;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        .period {
+            font-size: 12px;
+            color: var(--ink-light);
+            white-space: nowrap;
+            padding-top: 4px;
+        }
+
+        .job-title {
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 14px;
+        }
+
+        .bullets {
+            list-style: none;
+            margin-bottom: 14px;
+        }
+
+        .bullets li {
+            padding-left: 18px;
+            margin-bottom: 7px;
+            font-size: 14px;
+            line-height: 1.65;
+            color: var(--ink-mid);
+            position: relative;
+        }
+
+        .bullets li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            opacity: 0.7;
+            font-size: 12px;
+            top: 1px;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 14px;
+        }
+
+        .tag {
+            font-size: 11px;
+            padding: 3px 10px;
+            border: 1px solid var(--tag-border);
+            background: var(--tag-bg);
+            color: var(--accent);
+            border-radius: 100px;
+            font-weight: 400;
+            letter-spacing: 0.2px;
+        }
+
+        /* ── EDUCATION ── */
+        .edu-item {
+            margin-bottom: 22px;
+        }
+
+        .edu-item:last-child { margin-bottom: 0; }
+
+        .edu-school {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 21px;
+            font-weight: 500;
+            margin-bottom: 3px;
+        }
+
+        .edu-degree {
+            font-size: 14px;
+            color: var(--ink-mid);
+            margin-bottom: 3px;
+        }
+
+        .edu-year {
+            font-size: 12px;
+            color: var(--ink-light);
+        }
+
+        /* ── SKILLS ── */
+        .skills-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .skill-row {
+            display: grid;
+            grid-template-columns: 170px 1fr;
+            gap: 16px;
+            align-items: start;
+        }
+
+        .skill-key {
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--ink-light);
+            font-weight: 500;
+            padding-top: 5px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .skill-tag {
+            font-size: 12.5px;
+            padding: 4px 13px;
+            background: #EDEDE8;
+            border-radius: 4px;
+            color: var(--ink-mid);
+        }
+
+        /* ── CERTIFICATIONS ── */
+        .cert-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .cert-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 6px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cert-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .cert-item:first-child { padding-top: 0; }
+
+        .cert-left {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .cert-name {
+            font-size: 14px;
+            color: var(--ink);
+        }
+
+        .cert-issuer {
+            font-size: 12px;
+            color: var(--ink-light);
+        }
+
+        .cert-date {
+            font-size: 12px;
+            color: var(--ink-light);
+            white-space: nowrap;
+        }
+
+        /* ── ANIMATION ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(14px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 700px) {
+            header, section { padding-left: 24px; padding-right: 24px; }
+            h1 { font-size: 38px; }
+            .contact-row { flex-direction: column; gap: 10px; }
+            .job-meta { flex-direction: column; }
+            .skill-row { grid-template-columns: 1fr; gap: 8px; }
+            .cert-item { flex-direction: column; }
+        }
+
+        /* ── PRINT ── */
+        @media print {
+            body { background: white; }
+            section, header { animation: none; break-inside: avoid; }
+            .job:hover { border-color: var(--border); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="header-rule"></div>
+    <h1>Chanunporn Bunjongkarnkul</h1>
+    <p class="headline">Business Analyst &nbsp;·&nbsp; System Analyst</p>
+    <div class="contact-row">
+        <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+            <a href="mailto:patttaz@gmail.com">patttaz@gmail.com</a>
+        </span>
+        <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6.09 6.09l1.09-1.09a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +66 84 655 3213
+        </span>
+        <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Bangkok, Thailand
+        </span>
+    </div>
+</header>
+
+<!-- SUMMARY -->
+<section>
+    <p class="section-label">Summary</p>
+    <p class="summary-text">
+        A results-oriented Business Analyst and Software Implementation Specialist with over 7 years of experience across insurance (Non-Life) and logistics industries. Skilled in gathering business requirements, writing functional specifications, and creating BPMN process flow diagrams to guide development and QA teams. Experienced throughout the full SDLC in Agile environments, with a track record of bridging business stakeholders and IT teams. Holds an MBA in Digital Business and a Bachelor's in Engineering.
+    </p>
+</section>
+
+<!-- EXPERIENCE -->
+<section>
+    <p class="section-label">Experience</p>
+
+    <div class="job">
+        <div class="job-meta">
+            <span class="company">Freewill Solutions Co., Ltd.</span>
+            <span class="period">May 2024 – Present</span>
+        </div>
+        <div class="job-title">Software Implementation Specialist</div>
+        <ul class="bullets">
+            <li>Decreased customer support tickets by 40% by analyzing user data, identifying root-cause system issues, and implementing a clear task prioritization process.</li>
+            <li>Designed and delivered client Change Requests (CRs) generating approximately 1 million THB in yearly revenue from customized system features.</li>
+            <li>Managed a core insurance (non-life) system across 5 key modules: Underwriting, Claims, Reinsurance, Accounting &amp; Reporting, and Reference.</li>
+            <li>Documented requirements as functional specifications and BPMN process flow diagrams; maintained all project documents in SharePoint Online.</li>
+            <li>Participated in all SDLC phases — from requirements gathering and system design through testing, UAT support, and deployment.</li>
+            <li>Built a team AI knowledge base using Claude AI connected via a local MCP server; applied NotebookLM for automated meeting summarization.</li>
+        </ul>
+        <div class="tech-stack">
+            <span class="tag">SQL Informix</span>
+            <span class="tag">Postman</span>
+            <span class="tag">Delphi</span>
+            <span class="tag">.NET / C#</span>
+            <span class="tag">StarTeam</span>
+            <span class="tag">Confluence</span>
+            <span class="tag">Workkami</span>
+            <span class="tag">Microsoft 365</span>
+            <span class="tag">Claude AI</span>
+            <span class="tag">NotebookLM</span>
+            <span class="tag">MCP</span>
+        </div>
+    </div>
+
+    <div class="job">
+        <div class="job-meta">
+            <span class="company">Thai Food Group PCL.</span>
+            <span class="period">June 2023 – May 2024</span>
+        </div>
+        <div class="job-title">Business Analyst &amp; System Analyst</div>
+        <ul class="bullets">
+            <li>Gathered and documented requirements as user stories, functional specs, and BPMN diagrams covering vehicle routing and parcel delivery operations.</li>
+            <li>Designed 2 scalable UI/UX prototypes (web &amp; mobile), translating complex logistics workflows into client-ready sales pitch materials.</li>
+            <li>Organized and led UAT sessions; tracked issues, prioritized fixes, and confirmed requirements were met before every release.</li>
+            <li>Designed database structures and improved data models to support high transaction volumes and efficient retrieval.</li>
+            <li>Coordinated Agile sprint planning and task tracking via Jira across development and QA teams.</li>
+        </ul>
+        <div class="tech-stack">
+            <span class="tag">SQL MSSQL</span>
+            <span class="tag">Figma</span>
+            <span class="tag">Firebase</span>
+            <span class="tag">Jira</span>
+            <span class="tag">Microsoft 365</span>
+        </div>
+    </div>
+
+    <div class="job">
+        <div class="job-meta">
+            <span class="company">Wewillapp Co., Ltd.</span>
+            <span class="period">June 2022 – December 2022</span>
+        </div>
+        <div class="job-title">Business Analyst</div>
+        <ul class="bullets">
+            <li>Worked directly with clients on custom software projects: corporate websites, redemption platforms (web &amp; mobile), and hospital registration kiosk systems.</li>
+            <li>Prepared project proposals, quotations, and accurate cost/timeline estimations.</li>
+            <li>Coordinated UI/UX reviews and functional validation between design and development teams before client handover.</li>
+        </ul>
+        <div class="tech-stack">
+            <span class="tag">Figma</span>
+            <span class="tag">Microsoft 365</span>
+        </div>
+    </div>
+
+    <div class="job">
+        <div class="job-meta">
+            <span class="company">Micware Asia Pacific Co., Ltd.</span>
+            <span class="period">June 2019 – June 2022</span>
+        </div>
+        <div class="job-title">Software Engineer</div>
+        <ul class="bullets">
+            <li>Developed and maintained front-end software for in-vehicle infotainment systems in collaboration with the Japan HQ team.</li>
+            <li>Translated UI/UX specifications into responsive interfaces optimized for automotive displays.</li>
+            <li>Conducted unit and integration testing to validate functionality and system stability.</li>
+        </ul>
+        <div class="tech-stack">
+            <span class="tag">C/C++</span>
+            <span class="tag">Java (Android)</span>
+            <span class="tag">GitHub</span>
+        </div>
+    </div>
+</section>
+
+<!-- EDUCATION -->
+<section>
+    <p class="section-label">Education</p>
+    <div class="edu-item">
+        <div class="edu-school">King Mongkut's University of Technology Thonburi</div>
+        <div class="edu-degree">Master of Business Administration — Digital Business Management</div>
+        <div class="edu-year">2021 – 2023</div>
+    </div>
+    <div class="edu-item" style="margin-top:22px;">
+        <div class="edu-school">King Mongkut's University of Technology Thonburi</div>
+        <div class="edu-degree">Bachelor of Engineering — Electrical Communication &amp; Electronic Engineering</div>
+        <div class="edu-year">2015 – 2019</div>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section>
+    <p class="section-label">Skills</p>
+    <div class="skills-grid">
+        <div class="skill-row">
+            <div class="skill-key">Analysis &amp; Design</div>
+            <div class="skill-tags">
+                <span class="skill-tag">SDLC</span>
+                <span class="skill-tag">Requirement Gathering</span>
+                <span class="skill-tag">Functional Specifications</span>
+                <span class="skill-tag">BPMN</span>
+                <span class="skill-tag">Swimlane Diagrams</span>
+                <span class="skill-tag">User Stories</span>
+                <span class="skill-tag">Use Cases</span>
+                <span class="skill-tag">UI/UX Prototyping (Figma)</span>
+                <span class="skill-tag">Database Design</span>
+            </div>
+        </div>
+        <div class="skill-row">
+            <div class="skill-key">Database</div>
+            <div class="skill-tags">
+                <span class="skill-tag">Informix</span>
+                <span class="skill-tag">MSSQL</span>
+            </div>
+        </div>
+        <div class="skill-row">
+            <div class="skill-key">Programming</div>
+            <div class="skill-tags">
+                <span class="skill-tag">C / C++</span>
+                <span class="skill-tag">C#</span>
+                <span class="skill-tag">.NET Framework</span>
+                <span class="skill-tag">Delphi</span>
+                <span class="skill-tag">Java (Android)</span>
+            </div>
+        </div>
+        <div class="skill-row">
+            <div class="skill-key">Tools &amp; Testing</div>
+            <div class="skill-tags">
+                <span class="skill-tag">Postman</span>
+                <span class="skill-tag">GitHub</span>
+                <span class="skill-tag">Jira</span>
+                <span class="skill-tag">Confluence</span>
+                <span class="skill-tag">Figma</span>
+                <span class="skill-tag">Tableau</span>
+                <span class="skill-tag">RapidMiner</span>
+                <span class="skill-tag">Microsoft 365</span>
+                <span class="skill-tag">StarTeam</span>
+            </div>
+        </div>
+        <div class="skill-row">
+            <div class="skill-key">AI Tools</div>
+            <div class="skill-tags">
+                <span class="skill-tag">Claude AI</span>
+                <span class="skill-tag">NotebookLM</span>
+                <span class="skill-tag">MCP (Model Context Protocol)</span>
+            </div>
+        </div>
+        <div class="skill-row">
+            <div class="skill-key">Domains</div>
+            <div class="skill-tags">
+                <span class="skill-tag">Insurance (Non-Life)</span>
+                <span class="skill-tag">Logistics &amp; Delivery</span>
+                <span class="skill-tag">Automotive Infotainment</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section>
+    <p class="section-label">Certifications</p>
+    <div class="cert-list">
+        <div class="cert-item">
+            <div class="cert-left">
+                <span class="cert-name">Personal Data Protection For Thai Citizen</span>
+                <span class="cert-issuer">PDPC Thailand</span>
+            </div>
+            <span class="cert-date">Feb 2026</span>
+        </div>
+        <div class="cert-item">
+            <div class="cert-left">
+                <span class="cert-name">Applications &amp; Use Cases Professional</span>
+                <span class="cert-issuer">RapidMiner Academy</span>
+            </div>
+            <span class="cert-date">Oct 2022</span>
+        </div>
+        <div class="cert-item">
+            <div class="cert-left">
+                <span class="cert-name">Data Engineering Professional</span>
+                <span class="cert-issuer">RapidMiner Academy</span>
+            </div>
+            <span class="cert-date">Oct 2022</span>
+        </div>
+        <div class="cert-item">
+            <div class="cert-left">
+                <span class="cert-name">Machine Learning Professional</span>
+                <span class="cert-issuer">RapidMiner Academy</span>
+            </div>
+            <span class="cert-date">Oct 2022</span>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
