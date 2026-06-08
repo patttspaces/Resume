@@ -21,7 +21,7 @@ comfortable across the full SDLC — from requirements gathering all the way to 
 
 ### view resume
 
-→ https://patttspaces.github.io/Resume/
+→ https://patttspaces.github.io
 
 ---
 
